@@ -112,6 +112,15 @@ button {
   background: #2c3541;
   color: #cdd8e4;
   font-size: 14px;
+  border: 3px solid;
+  border-color: #c0c8d2;
+  padding: 0;
+}
+
+.Direcional span {
+    grid-column: 2;
+    grid-row: 2;
+    background: #2c3541;
 }
 
 .Cima  { 

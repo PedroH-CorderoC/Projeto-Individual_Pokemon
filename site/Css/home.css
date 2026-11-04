@@ -1,0 +1,209 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 24px 13px;
+  min-height: 100vh;
+  background-color:  #1b2634;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #142233;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* ================================================================
+   1. O CONSOLE
+   ================================================================ */
+
+.Console {
+  width: 640px
+}
+
+/* As duas carcaças. A cor vem do JavaScript (escolha no Perfil);
+   o brilho vem do degradê transparente por cima. */
+.Borda {
+  padding: 25px;
+  background-color: #dfe6ee;
+  box-shadow: 0 25px 27px rgba(0, 0, 0, 0.4);
+}
+
+.Borda-cima {
+  border-radius: 30px 30px 6px 6px;
+}
+
+.Borda-baixo {
+  border-radius: 6px 6px 36px 36px;
+}
+
+.Dobradica {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  height: 19px;
+  margin: 0 3%;
+  background-color: #7a8595;
+}
+
+.Dobradica span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #59636f;
+}
+
+.Dobradica .camera {
+  width: 9px;
+  height: 9px;
+  background: #2b3440;
+}
+
+/* A moldura preta em volta da tela */
+.moldura {
+  padding: 11px;
+  border-radius: 10px;
+  background: #202833;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.Tela {
+  overflow-y: auto;
+  border-radius: 6px;
+  scrollbar-width: none;
+}
+
+.cima {
+  height: 426px;
+  padding: 18px 22px;
+  background-color: #154166;
+  color: #e9f5ff;
+}
+
+.baixo {
+  height: 257px;
+  padding: 19px;
+  background: #f2f7fc;
+  color: #142233;
+}
+
+
+/* ================================================================
+   2. CONTROLES FÍSICOS (direcional, A B X Y, select, start)
+   ================================================================ */
+
+.Controles {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.moldura-baixo {
+  flex: 1;
+  min-width: 0;
+}
+
+.Direcional {
+  display: grid;
+  grid-template-columns: repeat(3, 28px);
+  grid-template-rows: repeat(3, 28px);
+}
+
+.Direcional button {
+  background: #2c3541;
+  color: #cdd8e4;
+  font-size: 14px;
+}
+
+.Cima  { 
+    grid-column: 2; 
+    grid-row: 1; 
+    border-radius: 8px 8px 0 0; 
+}
+
+.Esquerda  { 
+    grid-column: 1; 
+    grid-row: 2; 
+    border-radius: 8px 0 0 8px; 
+}
+
+.Direita   { 
+    grid-column: 3;
+    grid-row: 2; 
+    border-radius: 0 8px 8px 0; 
+}
+
+.Baixo { 
+    grid-column: 2; 
+    grid-row: 3;
+    border-radius: 0 0 8px 8px; 
+}
+
+.Lado-Direito {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.abxy {
+  display: grid;
+  grid-template-columns: repeat(3, 35px);
+  grid-template-rows: repeat(3, 35px);
+  place-items: center;
+}
+
+.Teclas {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  color: white;
+  font-weight: 800;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+.TX { 
+    grid-column: 2; 
+    grid-row: 1; 
+    background: #2f6fe0; 
+}
+
+.TY { 
+    grid-column: 1; 
+    grid-row: 2; 
+    background: #2da55a; 
+}
+
+.TA {
+    grid-column: 3; 
+    grid-row: 2; 
+    background: #e5433b; 
+}
+
+.TB { 
+    grid-column: 2; 
+    grid-row: 3; 
+    background: #efb62a; 
+    color: #3a2c00; 
+}
+
+.Select-Start {
+  display: flex;
+  gap: 18px;
+}
+
+.Select-Start button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #3b4959;
+  font-size: 10px;
+  font-weight: 800;
+}

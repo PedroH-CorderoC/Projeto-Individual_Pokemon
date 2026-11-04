@@ -1,7 +1,3 @@
-html {
-  font-size: 16px;
-}
-
 body {
   margin: 0;
   padding: 24px 13px;
@@ -9,6 +5,8 @@ body {
   background-color:  #1b2634;
   font-family: Arial, Helvetica, sans-serif;
   color: #142233;
+  display: flex;
+  justify-content: center;
 }
 
 button {
@@ -21,14 +19,12 @@ button {
    ================================================================ */
 
 .Console {
-  width: 640px
+  width: 640px;
 }
 
-/* As duas carcaças. A cor vem do JavaScript (escolha no Perfil);
-   o brilho vem do degradê transparente por cima. */
 .Borda {
   padding: 25px;
-  background-color: #dfe6ee;
+  background-color: gold;
   box-shadow: 0 25px 27px rgba(0, 0, 0, 0.4);
 }
 
@@ -63,7 +59,6 @@ button {
   background: #2b3440;
 }
 
-/* A moldura preta em volta da tela */
 .moldura {
   padding: 11px;
   border-radius: 10px;
@@ -77,7 +72,7 @@ button {
   scrollbar-width: none;
 }
 
-.cima {
+.grande {
   height: 426px;
   padding: 18px 22px;
   background-color: #154166;
@@ -93,7 +88,7 @@ button {
 
 
 /* ================================================================
-   2. CONTROLES FÍSICOS (direcional, A B X Y, select, start)
+   2. CONTROLES FÍSICOS
    ================================================================ */
 
 .Controles {
@@ -206,4 +201,31 @@ button {
   color: #3b4959;
   font-size: 10px;
   font-weight: 800;
+}
+
+/* ================================================================
+   3. MENU
+   ================================================================ */
+
+
+.Menu {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.Menu button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 55px;
+  padding: 6px 2px;
+  border: 0;
+  border-radius: 14px;
+  background: white;
+  color: #2a3849;
+  font-size: 15px;
 }

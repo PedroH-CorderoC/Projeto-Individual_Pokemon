@@ -1,9 +1,9 @@
 body {
   margin: 0;
   padding: 24px 13px;
-  min-height: 100vh;
   background-color:  #1b2634;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "DotGothic16", monospace;
+  letter-spacing: 2px;
   color: #142233;
   display: flex;
   justify-content: center;
@@ -12,7 +12,6 @@ body {
 button {
   cursor: pointer;
 }
-
 
 /* ================================================================
    1. O CONSOLE
@@ -60,16 +59,31 @@ button {
 }
 
 .moldura {
+  position: relative;
   padding: 11px;
   border-radius: 10px;
   background: #202833;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
+.moldura::after {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 11px;
+  right: 11px;
+  bottom: 11px;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, black 0px,  transparent 1px, gray 1px, transparent 3px);
+  opacity: 0.15;
+  border-radius: 7px;
+}
+
 .Tela {
   overflow-y: auto;
+  overflow-x: hidden;
   border-radius: 6px;
-  scrollbar-width: none;
+  scrollbar-width: thin;
 }
 
 .grande {
@@ -79,11 +93,13 @@ button {
   color: #e9f5ff;
 }
 
-.baixo {
+.pequena {
   height: 257px;
   padding: 19px;
   background: #f2f7fc;
   color: #142233;
+  display: flex;
+  justify-content: center;
 }
 
 
@@ -121,6 +137,7 @@ button {
     grid-column: 2;
     grid-row: 2;
     background: #2c3541;
+    border-radius: 3px;
 }
 
 .Cima  { 
@@ -232,9 +249,107 @@ button {
   gap: 4px;
   min-height: 55px;
   padding: 6px 2px;
-  border: 0;
   border-radius: 14px;
   background: white;
   color: #2a3849;
   font-size: 15px;
+  box-shadow: 3px 4px 0px gray;
+}
+
+/* ================================================================
+  5. Home
+  ================================================================ */
+
+.Caixa-texto {
+  padding: 5px;
+  background: rgb(128, 128, 128, 0.5); 
+  border-radius: 10px;
+}
+
+.Caixa-texto p{
+  text-align: center;
+  font-size: 15px;
+}
+
+
+.Caixa-texto h4{
+  color: #1b2634;
+}
+
+.Home-Pequeno {
+  align-self: center;
+  text-align: center;
+}
+
+/* ================================================================
+  6. Login e Cadastro
+  ================================================================ */
+
+.Login {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-around;
+  gap: 20px;       
+}
+
+.trocar_cadastro {
+  display: flex;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 12px;
+  background: #cfdbe8;
+}
+
+.trocar_cadastro button{
+  padding: 10px;
+  border: 0;
+  border-radius: 9px;
+  background: none;
+  color: #566b82;
+  font-weight: 800;  
+  width: 150px;
+}
+
+.Login input {
+  border: 1px solid;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 90%;
+  padding: 10px;
+}
+
+.registros{
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+button.botao_finalizar {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: blue;
+  color: white;
+  box-shadow: 3px 4px 0 gray;
+}
+
+/* ================================================================
+  . Perfil
+  ================================================================ */
+
+.Sem-Cadastro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+button.botao {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: blue;
+  color: white;
+  box-shadow: 3px 4px 0 gray;
 }

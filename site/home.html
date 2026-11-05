@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="./Css/home.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=DotGothic16&family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -13,12 +16,12 @@
 
         <div class="Borda Borda-cima">
             <div class="moldura">
-                <div class="Tela grande"></div>
+                <div class="Tela grande" id="TelaGrande"></div>
             </div>
         </div>
 
         <div class="Dobradica">
-           <span></span> <span></span> <span class="camera"></span> <span></span> <span></span>
+            <span></span> <span></span> <span class="camera"></span> <span></span> <span></span>
         </div>
 
         <div class="Borda Borda-baixo">
@@ -32,7 +35,7 @@
                 </div>
 
                 <div class="moldura moldura-baixo">
-                    <div class="Tela baixo"></div>
+                    <div class="Tela pequena" id="TelaBaixa"></div>
                 </div>
 
                 <div class="Lado-Direito">
@@ -50,16 +53,99 @@
                 </div>
             </div>
 
-            <div class="Menu">
-                <button>Dash</button>
-                <button>Quiz</button>
-                <button>Home</button>
-                <button>Jogos</button>
-                <button>Perfil</button>
-                <button>Login</button>
+            <div class="Menu" id="Menu">
+                <button onclick="Dash()" id="dash">Dash</button>
+                <button onclick="quiz()" id="quiz">Quiz</button>
+                <button onclick="Home()" id="home">Home</button>
+                <button onclick="Jogos()" id="jogos">Jogos</button>
+                <button onclick="Perfil()" id="perfil">Perfil</button>
+                <button onclick="Login()" id="login">Login</button>
             </div>
         </div>
     </div>
 </body>
 
 </html>
+<script>
+    let Nome = '';
+    let Curiosidade = '';
+    VoceSabia()
+    home.style.color = 'white'
+    home.style.background = 'blue'
+    home.style.boxShadow = 'none'
+    TelaGrande.innerHTML = `<h1>Olá, Treinador!</h1> <br>
+    <h3>Escolha uma opção na parte de baixo do DS</h3><br><br>
+    <div class='Caixa-texto'> <h4>Você Sabia?</h4>
+    <p>${Curiosidade}</p>`
+    TelaBaixa.innerHTML = `<h4 class="Home-Pequeno">Vamos descobrir mais sobre esse mundo Pokemon</h4><br>`
+
+    function Home() {
+        VoceSabia()
+        resetar()
+        home.style.color = 'white'
+        home.style.background = 'blue'
+        home.style.boxShadow = 'none'
+        TelaGrande.innerHTML = `<h1>Olá, Treinador!</h1> <br>
+    <h3>Escolha uma opção na parte de baixo do DS</h3><br><br>
+    <div class='Caixa-texto'> <h4>Você Sabia?</h4>
+    <p>${Curiosidade}</p></div>`
+        TelaBaixa.innerHTML = `<h4 class="Home-Pequeno">Vamos descobrir mais sobre esse mundo Pokemon</h4><br>`
+    }
+
+    function resetar() {
+        dash.style.color = '#2a3849'
+        dash.style.background = 'white'
+        dash.style.boxShadow = '3px 4px 0px gray'
+
+        quiz.style.color = '#2a3849'
+        quiz.style.background = 'white'
+        quiz.style.boxShadow = '3px 4px 0px gray'
+
+        home.style.color = '#2a3849'
+        home.style.background = 'white'
+        home.style.boxShadow = '3px 4px 0px gray'
+
+        jogos.style.color = '#2a3849'
+        jogos.style.background = 'white'
+        jogos.style.boxShadow = '3px 4px 0px gray'
+
+        perfil.style.color = '#2a3849'
+        perfil.style.background = 'white'
+        perfil.style.boxShadow = '3px 4px 0px gray'
+
+        login.style.color = '#2a3849'
+        login.style.background = 'white'
+        login.style.boxShadow = '3px 4px 0px gray'
+    }
+
+    function VoceSabia() {
+        let Num_Curio = (Math.random() * 10).toFixed(0);
+
+        if (Num_Curio == 1) {
+            Curiosidade = 'Durante o desenvolvimento de Pokémon Red e Green, Shigeki Morimoto adicionou Mew secretamente, depois que a equipe já havia encerrado a fase de depuração. Ele aproveitou aproximadamente 300 bytes que sobraram no cartucho. A ideia era que ninguém descobrisse sua existência!'
+        } else if (Num_Curio == 2) {
+            Curiosidade = 'MissingNo. não é um Pokémon oficial, mas um erro de programação de Red e Blue. Ao encontrá-lo por meio de uma sequência específica de ações, o jogador podia multiplicar o sexto item da mochila por 128. O encontro também podia causar problemas nos gráficos e no Hall da Fama.'
+        } else if (Num_Curio == 3) {
+            Curiosidade = 'Até a quinta geração, uma Azurill fêmea tinha a possibilidade de evoluir para um Marill macho. Isso acontecia porque as duas espécies possuíam proporções de gênero diferentes. O comportamento foi corrigido a partir da sexta geração.'
+        } else if (Num_Curio == 4) {
+            Curiosidade = 'As manchas no corpo de Spinda são determinadas por valores internos do jogo. Isso permite mais de 4 bilhões de combinações diferentes, fazendo com que praticamente cada Spinda tenha uma aparência única.'
+        } else if (Num_Curio == 5) {
+            Curiosidade = 'Em Pokémon Black & White, existe uma diferença curiosa entre as duas versões: enquanto Pokémon Black possui a Black City, uma cidade cheia de prédios e treinadores, Pokémon White apresenta a White Forest, uma floresta repleta de natureza e Pokémon selvagens. Mas o mais interessante é que esses locais possuem habitantes que podem desaparecer com o tempo caso você não interaja com eles! Além disso, é possível receber habitantes de outros jogadores, fazendo com que cada cidade ou floresta tenha uma população diferente.'
+        } else if (Num_Curio == 6) {
+            Curiosidade = 'Em 16 de dezembro de 1997, o episódio 38 do anime, conhecido como Dennō Senshi Porygon, apresentou uma sequência de flashes vermelhos e azuis extremamente rápidos. O efeito provocou sintomas como convulsões, tontura e náuseas em centenas de espectadores japoneses. O episódio nunca mais foi retransmitido e Porygon acabou ficando associado a um dos maiores acidentes da história da televisão japonesa.'
+        } else if (Num_Curio == 7) {
+            Curiosidade = 'Em 1997, a Nintendo apresentou uma demonstração de Pokémon Gold e Silver que revelava uma Johto muito diferente da versão lançada. Vários Pokémon tinham designs alternativos, alguns nunca chegaram aos jogos e até o mapa possuía cidades e estruturas que foram modificadas ou removidas. É como descobrir uma versão perdida da segunda geração!'
+        } else if (Num_Curio == 8) {
+            Curiosidade = 'A tabela de efetividade de Red e Blue tinha um erro: golpes Fantasma deveriam ser super efetivos contra Psíquicos, mas causavam nenhum dano. Isso ajudou a tornar o tipo Psíquico extremamente dominante na primeira geração.'
+        } else if (Num_Curio == 9) {
+            Curiosidade = 'Durante anos, jogadores acreditaram que Mew estava escondido embaixo de um caminhão próximo ao porto de Vermilion. A lenda era falsa, mas nos remakes FireRed e LeafGreen os desenvolvedores colocaram um item escondido naquele mesmo local: uma Lava Cookie. Foi uma referência à famosa lenda criada pelos próprios jogadores!'
+        } else {
+            Curiosidade = 'Manaphy possui uma característica reprodutiva única: ao cruzá-lo com um Ditto, é possível obter um ovo de Phione. O mais curioso é que Phione nunca evolui para Manaphy, mesmo sendo diretamente relacionado a ele. É um dos casos mais incomuns de reprodução em toda a franquia!'
+        }
+    }
+</script>
+<script src="./JS/dash.js"></script>
+<script src="./JS/quiz.js"></script>
+<script src="./JS/Jogo.js"></script>
+<script src="./JS/login_cadastro.js"></script>
+<script src="./JS/perfil.js"></script>

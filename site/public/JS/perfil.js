@@ -123,8 +123,6 @@ function salvarCor(nomeCor) {
 function Deslogar() {
     Nome_Usuario = '';
     Email_Usuario = '';
-    BordaCima.style.background = 'gold';
-    BordaBaixa.style.background = 'gold';
+    AplicarCor('gold');
     Home()
 }
-

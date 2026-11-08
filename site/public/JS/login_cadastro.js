@@ -1,3 +1,8 @@
+let email_validos = ['@gmail.com', '@sptech.school']
+let caracter_nescessarios = ['#', '@', '$', '&']
+let numeros_nescessarios = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+
+
 function Login() {
     resetar()
     login.style.color = 'white'
@@ -12,6 +17,7 @@ function Login() {
                 <button id="botao_cadastro" onclick ='Cadastro()'>Cadastro</button> 
                 </div><div class='registros'>Entre com Email<input id='ipt_email'></div> 
                 <div class='registros'>Entre com a senha<input id='ipt_senha'></div>
+                <div id='msg' class='mensagem'></div>
                 <button class='botao_finalizar' onclick='FinalizarLogin()'>Login</button></div> 
                 `
     botao_login.style.background = 'white'
@@ -27,6 +33,7 @@ function Cadastro() {
                 <div class='registros'>Entre com Email<input id='ipt_email'></div> 
                 <div class='registros'>Entre com a senha<input id='ipt_senha'></div>
                 <div class='registros'>Confirmar a senha<input id='ipt_senha_confir'></div>
+                <div id='msg' class='mensagem'></div>
                 <button class='botao_finalizar' onclick='FinalizarCadastro()'>Cadastrar</button></div> 
                 `;
     botao_cadastro.style.background = 'white';
@@ -46,11 +53,44 @@ function FinalizarCadastro() {
       senhaVar == "" ||
       confirmacaoSenhaVar == ""
     ) {
-      alert("Mensagem de erro para todos os campos em branco")
-      finalizarAguardar();
+      mostrarMensagem("Preencha Todos os Campos")
       return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
+    } else if (senhaVar != confirmacaoSenhaVar) {
+      mostrarMensagem("Senhas diferentes")
+      return false;
+    } 
+
+    let Caracter_colocado = false;
+    let Numero_colocado = false;
+    let Email_valido = false;
+
+    for (let contador = 0; contador < email_validos.length; contador++) {
+     if (emailVar.includes(email_validos[contador]) ==  true) {
+      Email_valido = true;
+     }
+    }
+
+    for (let contador = 0; contador < caracter_nescessarios.length; contador++) {
+      if (senhaVar.includes(caracter_nescessarios[contador]) ==  true) {
+      Caracter_colocado = true;
+     }
+    }
+
+    for (let contador = 0; contador < numeros_nescessarios.length; contador++) {
+      if (senhaVar.includes(numeros_nescessarios[contador]) ==  true) {
+      Numero_colocado = true;
+     }
+    }
+
+    if (Email_valido == false) {
+      mostrarMensagem('Email invalido. Use gmail ou sptech.school');
+      return false;
+    } else if (senhaVar.length < 8) {
+      mostrarMensagem('Senha tem que ter 8 carateres');
+      return false;
+    } else if (Numero_colocado == false || Caracter_colocado == false) {
+      mostrarMensagem('Senha precisa de Caracter Especial e Numero');
+      return false;
     }
 
     // Enviando o valor da nova input
@@ -60,8 +100,6 @@ function FinalizarCadastro() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar
@@ -72,23 +110,23 @@ function FinalizarCadastro() {
 
         if (resposta.ok) {
 
-          alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
+          mostrarMensagem("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
 
           setTimeout(() => {
             Login()  
           }, "2000");
-
-          limparFormulario();
-          finalizarAguardar();
+          
         } else {
+          resposta.text().then(function (texto) {
+            mostrarMensagem(texto);  
+        })
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
+        
       });
-
     return false;
   }
 
@@ -98,12 +136,8 @@ function FinalizarLogin() {
     var senhaVar = ipt_senha.value;
 
         if (emailVar == "" || senhaVar == "") {
-            alert('Mensagem de erro para todos os campos em branco')
-            finalizarAguardar();
+            mostrarMensagem('Mensagem de erro para todos os campos em branco')
             return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -142,7 +176,6 @@ function FinalizarLogin() {
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
                 });
             }
 
@@ -153,6 +186,6 @@ function FinalizarLogin() {
         return false;
 }
 
-function sumirMensagem() {
-    cardErro.style.display = "none";
-  }
+function mostrarMensagem(texto) {
+  msg.innerHTML = texto
+}

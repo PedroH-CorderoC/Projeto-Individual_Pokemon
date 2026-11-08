@@ -15,4 +15,32 @@ function buscarPerfil(req, res) {
     });
 }
 
-module.exports = { buscarPerfil };
+function atualizarAvatar(req, res) {
+    var email = req.body.emailServer;
+    var avatar = req.body.avatarServer;
+
+    perfilModel.atualizarAvatar(email, avatar).then(function (resultado) {
+        res.status(200).json(resultado);
+    }).catch(function (erro) {
+        console.log(erro);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function atualizarCor(req, res) {
+    var email = req.body.emailServer;
+    var cor = req.body.corServer;
+
+    perfilModel.atualizarCor(email, cor).then(function (resultado) {
+        res.status(200).json(resultado);
+    }).catch(function (erro) {
+        console.log(erro);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+module.exports = { 
+    buscarPerfil,
+    atualizarCor,
+    atualizarAvatar
+};

@@ -14,7 +14,7 @@
 <body>
     <div class="Console">
 
-        <div class="Borda Borda-cima">
+        <div class="Borda Borda-cima" id="BordaCima">
             <div class="moldura">
                 <div class="Tela grande" id="TelaGrande"></div>
             </div>
@@ -24,7 +24,7 @@
             <span></span> <span></span> <span class="camera"></span> <span></span> <span></span>
         </div>
 
-        <div class="Borda Borda-baixo">
+        <div class="Borda Borda-baixo" id="BordaBaixa">
             <div class="Controles">
                 <div class="Direcional">
                     <button class="Cima">&#9650;</button>
@@ -143,6 +143,11 @@
         } else {
             Curiosidade = 'Manaphy possui uma característica reprodutiva única: ao cruzá-lo com um Ditto, é possível obter um ovo de Phione. O mais curioso é que Phione nunca evolui para Manaphy, mesmo sendo diretamente relacionado a ele. É um dos casos mais incomuns de reprodução em toda a franquia!'
         }
+    }
+
+    function AplicarCor(nomeCor) {
+        BordaCima.style.background = nomeCor;
+        BordaBaixa.style.background = nomeCor;
     }
 </script>
 <script src="./JS/dashboard.js"></script>

@@ -7,4 +7,12 @@ router.get("/buscar/:email", function (req, res) {
     perfilController.buscarPerfil(req, res);
 });
 
+router.put("/cor", function (req, res) {
+    perfilController.atualizarCor(req, res);
+});
+
+router.put("/avatar", function (req, res) {
+    perfilController.atualizarAvatar(req, res);
+});
+
 module.exports = router;

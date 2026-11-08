@@ -353,3 +353,65 @@ button.botao {
   color: white;
   box-shadow: 3px 4px 0 gray;
 }
+
+.Fotos_Alterar img {
+  width: 50px;
+  cursor: pointer;
+}
+
+.Foto_exibicao img{
+  width: 100px;
+  height: 100px;
+}
+
+.Cartao {
+    display: flex;          
+    align-items: center;
+    gap: 15px;
+}
+
+.Linha-Data {
+    display: flex;         
+    gap: 6px;
+    align-items: baseline;
+}
+
+.Dados {
+  display: flex;
+  flex-direction: column;
+}
+
+.Botao_Cor {
+  border-radius: 100%;
+  color: white;
+}
+
+.Botao_Cor.Dourado_Mostrar {
+  background: gold;
+}
+
+.Botao_Cor.Azul_Mostrar {
+  background: blue;
+}
+
+.Botao_Cor.Verde_Mostrar {
+  background: green;
+}
+
+.Botao_Cor.Roxo_Mostrar {
+  background: purple;
+}
+
+.Botao_Cor.Cinza_Mostrar {
+  background: gray;
+}
+
+.Botao_Cor.Ciano_Mostrar {
+  background: cyan;
+}
+
+.Deslogar {
+  display: flex;
+  flex-direction: column;
+  align-items: center ;
+}

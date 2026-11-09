@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PokeDS</title>
     <link rel="stylesheet" href="./Css/home.css">
+    <link rel="stylesheet" href="./Css/perfil.css">
+    <link rel="stylesheet" href="./Css/login_cadastro.css">
+    <link rel="stylesheet" href="./Css/quiz_pokemon.css">
+    <link rel="stylesheet" href="./Css/dash.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=DotGothic16&family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -40,22 +44,22 @@
 
                 <div class="Lado-Direito">
                     <div class="abxy">
-                        <button class="Teclas TX">X</button>
-                        <button class="Teclas TY">Y</button>
-                        <button class="Teclas TA">A</button>
-                        <button class="Teclas TB">B</button>
+                        <button onclick="responder('b')" class="Teclas TX">X</button>
+                        <button onclick="responder('a')" class="Teclas TY">Y</button>
+                        <button onclick="responder('c')" class="Teclas TA">A</button>
+                        <button onclick="responder('d')" class="Teclas TB">B</button>
                     </div>
 
                     <div class="Select-Start">
-                        <button>SELECT</button>
-                        <button>START</button>
+                        <button onclick="Quiz()">SELECT</button>
+                        <button onclick="Quiz()">START</button>
                     </div>
                 </div>
             </div>
 
             <div class="Menu" id="Menu">
                 <button onclick="Dash()" id="dash">Dash</button>
-                <button onclick="quiz()" id="quiz">Quiz</button>
+                <button onclick="Quiz()" id="quiz_pokemon">Quiz</button>
                 <button onclick="Home()" id="home">Home</button>
                 <button onclick="Jogos()" id="jogos">Jogos</button>
                 <button onclick="Perfil()" id="perfil">Perfil</button>
@@ -98,9 +102,9 @@
         dash.style.background = 'white'
         dash.style.boxShadow = '3px 4px 0px gray'
 
-        quiz.style.color = '#2a3849'
-        quiz.style.background = 'white'
-        quiz.style.boxShadow = '3px 4px 0px gray'
+        quiz_pokemon.style.color = '#2a3849'
+        quiz_pokemon.style.background = 'white'
+        quiz_pokemon.style.boxShadow = '3px 4px 0px gray'
 
         home.style.color = '#2a3849'
         home.style.background = 'white'

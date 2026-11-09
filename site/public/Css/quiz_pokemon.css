@@ -1,0 +1,62 @@
+.Tipos-Quiz {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.Card-Quiz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    box-shadow: 3px 4px 0px #2a3849;
+}
+
+.Card-Quiz.Kanto_Quiz{ 
+    background: #d63c3c; 
+}
+.Card-Quiz.Tipos_Quiz{ 
+    background: #2f80ed; 
+}
+.Card-Quiz.Lendários_Quiz{ 
+    background: #7b4bc2; 
+}
+.Card-Quiz.Evoluções_Quiz{ 
+    background: #2e9e5b; 
+}
+.Card-Quiz.Anime_Quiz{ 
+    background: #f4c20d; color: #2a3849; 
+}
+.Card-Quiz.Jogos_Quiz { 
+    background: #4a5a6e; 
+}
+
+.Alternativas {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    height: 100%;
+}
+
+.Selecionar {
+    margin: 10px;
+    padding: 10px;
+    background: black;
+    border-radius: 10px;
+    gap: 5px;
+    display: flex;
+}
+
+.Alternativas button{
+    width: 250px;
+    border-radius: 10px;
+    background: blue;
+    color: white;
+}
+
+.Alternativas h2 {
+    color: red;
+}

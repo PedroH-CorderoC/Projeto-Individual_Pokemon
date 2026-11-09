@@ -1,0 +1,76 @@
+.Grafico-Dash {
+  position: relative;
+  height: 220px;
+}
+
+.Perfeitos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.Medalha {
+  padding: 6px 12px;
+  border-radius: 12px;
+  color: white;
+}
+
+.Dash-Baixo {
+  width: 100%;
+}
+
+.Kpis-Dash {
+  display: flex;
+  gap: 8px;
+}
+
+.Kpi {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  background: #154166;
+  color: #e9f5ff;
+  text-align: center;
+}
+
+.Kpi span {
+  display: block;
+  font-size: 18px;
+}
+
+.Kpi small {
+  font-size: 11px;
+}
+
+.Melhor-Linha {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.Melhor-Linha b {
+  width: 80px;
+  font-size: 13px;
+}
+
+.Melhor-Linha span {
+  width: 36px;
+  font-size: 13px;
+}
+
+.Barra {
+  flex: 1;
+  height: 10px;
+  border-radius: 5px;
+  background: #d5e0ec;
+  overflow: hidden;
+}
+
+.Barra-Preenchida {
+  height: 100%;
+}
+
+.Grafico-Pizza {
+  position: relative;
+  height: 90px;
+}

@@ -1,105 +1,156 @@
 var database = require("../database/config")
 
 function listar() {
-    console.log("ACESSEI O QUIZ MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-        select * from resposta;
+        SELECT idQuiz, Categoria, Descricao FROM Quiz;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function registrarQuiz(fkusuario, Pontuacao) {
-    const obterUltimaTentativa = `
-        SELECT MAX(tentativa) AS ultima FROM resposta WHERE fkusuario = ${fkusuario};
-    `;
-
-    return database.executar(obterUltimaTentativa)
-        .then(res => {
-            let novaTentativa = 1;
-            if (res.length > 0 && res[0].ultima !== null) {
-                novaTentativa = res[0].ultima + 1;
-            }
-
-            const insertResposta = `
-                INSERT INTO resposta (fkusuario, fkquiz, qtdacertos, tentativa)
-                VALUES (${fkusuario}, 1, ${Pontuacao}, ${novaTentativa});
-            `;
-            return database.executar(insertResposta);
-        });
-}
-
-function buscarQtdTentativas(idUsuario) {
+function buscarPerguntas(idQuiz) {
     var instrucao = `
-        select count(*) as tentativas 
-        from resposta 
-        where fkusuario = ${idUsuario};
-    `;
-    return database.executar(instrucao);
-}
-
-function buscarMaiorPontuacao(idUsuario) {
-    var instrucao = `
-        select max(qtdacertos) as maiorpontuacao 
-        from resposta 
-        where fkusuario = ${idUsuario};
-    `;
-    return database.executar(instrucao);
-}
-
-function obterTentativasEPontuacao(idUsuario) {
-  const instrucao = `
-    select 
-      count(*) as tentativas,
-      max(qtdacertos) as maiorpontuacao
-    from resposta
-    where fkusuario = ${idUsuario};
-  `;
-  return database.executar(instrucao);
-}
-
-function buscarUltimaTentativa(idUsuario) {
-    var instrucao = `
-        select max(date_format(dtresposta, '%d/%m/%y')) as ultimatentativa 
-        from resposta 
-        where fkusuario = ${idUsuario};
-    `;
-    return database.executar(instrucao);
-}
-
-function obterAcertosErrosUltimaTentativa(idUsuario) {
-  const instrucao = `
-    select 
-      qtdacertos,
-      (10 - qtdacertos) as erros
-    from resposta
-    where fkusuario = ${idUsuario}
-    order by tentativa desc
-    limit 1;
-  `;
-  return database.executar(instrucao);
-}
-
-function obterPontuacoesPorTentativa(idUsuario) {
-    const instrucao = `
-        select tentativa, qtdacertos as pontuacao
-        from resposta
-        where fkusuario = ${idUsuario}
-        order by tentativa desc
-        limit 5;
+        SELECT idPerguntas, Peergunta,
+               Alternativa_a, Alternativa_b, Alternativa_c, Alternativa_d,
+               Correta
+        FROM Perguntas
+        WHERE FkQuiz = ${idQuiz};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
+function registrarQuiz(email, idQuiz, acertos) {
+    var instrucao = `
+        INSERT INTO tentativas (FkUsuario, FkQuiz, idTentativa, acertos)
+        SELECT u.idUsuario,
+               ${idQuiz},
+               (SELECT COALESCE(MAX(t.idTentativa), 0) + 1
+                FROM tentativas t
+                WHERE t.FkUsuario = u.idUsuario AND t.FkQuiz = ${idQuiz}),
+               ${acertos}
+        FROM usuario u
+        WHERE u.Email = '${email}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function buscarQtdTentativas(email) {
+    var instrucao = `
+        SELECT COUNT(*) AS tentativas
+        FROM tentativas t
+        JOIN usuario u ON u.idUsuario = t.FkUsuario
+        WHERE u.Email = '${email}';
+    `;
+    return database.executar(instrucao);
+}
+
+function buscarMaiorPontuacao(email) {
+    var instrucao = `
+        SELECT MAX(t.acertos) AS maiorPontuacao
+        FROM tentativas t
+        JOIN usuario u ON u.idUsuario = t.FkUsuario
+        WHERE u.Email = '${email}';
+    `;
+    return database.executar(instrucao);
+}
+
+function obterTentativasEPontuacao(email) {
+    var instrucao = `
+        SELECT COUNT(*) AS tentativas,
+               MAX(t.acertos) AS maiorPontuacao
+        FROM tentativas t
+        JOIN usuario u ON u.idUsuario = t.FkUsuario
+        WHERE u.Email = '${email}';
+    `;
+    return database.executar(instrucao);
+}
+
+function buscarUltimaTentativa(email) {
+    var instrucao = `
+        SELECT DATE_FORMAT(MAX(t.data_realizacao), '%d/%m/%Y') AS ultimaTentativa
+        FROM tentativas t
+        JOIN usuario u ON u.idUsuario = t.FkUsuario
+        WHERE u.Email = '${email}';
+    `;
+    return database.executar(instrucao);
+}
+
+function obterAcertosErrosUltimaTentativa(email) {
+    var instrucao = `
+        SELECT t.acertos,
+               (SELECT COUNT(*) FROM Perguntas p WHERE p.FkQuiz = t.FkQuiz) - t.acertos AS erros
+        FROM tentativas t
+        JOIN usuario u ON u.idUsuario = t.FkUsuario
+        WHERE u.Email = '${email}'
+        ORDER BY t.data_realizacao DESC, t.idTentativa DESC
+        LIMIT 1;
+    `;
+    return database.executar(instrucao);
+}
+
+function obterPontuacoesPorTentativa(email) {
+    var instrucao = `
+        SELECT q.Categoria,
+               t.idTentativa AS tentativa,
+               t.acertos,
+               DATE_FORMAT(t.data_realizacao, '%d/%m %H:%i') AS momento
+        FROM tentativas t
+        JOIN usuario u ON u.idUsuario = t.FkUsuario
+        JOIN Quiz q ON q.idQuiz = t.FkQuiz
+        WHERE u.Email = '${email}'
+        ORDER BY t.data_realizacao DESC, t.idTentativa DESC
+        LIMIT 5;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function obterEvolucao(email) {
+    var instrucao = `
+        SELECT q.Categoria,
+               t.idTentativa AS tentativa,
+               t.acertos
+        FROM tentativas t
+        JOIN usuario u ON u.idUsuario = t.FkUsuario
+        JOIN Quiz q ON q.idQuiz = t.FkQuiz
+        WHERE u.Email = '${email}'
+        ORDER BY q.idQuiz, t.idTentativa;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function obterResumoQuizzes(email) {
+    var instrucao = `
+        SELECT q.idQuiz,
+               q.Categoria,
+               (SELECT COUNT(*) FROM Perguntas p WHERE p.FkQuiz = q.idQuiz) AS totalPerguntas,
+               COUNT(t.idTentativa) AS tentativas,
+               COALESCE(MAX(t.acertos), 0) AS melhor,
+               COALESCE(SUM(t.acertos), 0) AS somaAcertos
+        FROM Quiz q
+        LEFT JOIN tentativas t
+               ON t.FkQuiz = q.idQuiz
+              AND t.FkUsuario = (SELECT idUsuario FROM usuario WHERE Email = '${email}')
+        GROUP BY q.idQuiz, q.Categoria
+        ORDER BY q.idQuiz;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 module.exports = {
     listar,
+    buscarPerguntas,
     registrarQuiz,
     buscarQtdTentativas,
     buscarMaiorPontuacao,
     buscarUltimaTentativa,
     obterAcertosErrosUltimaTentativa,
     obterTentativasEPontuacao,
-    obterPontuacoesPorTentativa
+    obterPontuacoesPorTentativa,
+    obterEvolucao,
+    obterResumoQuizzes
 };

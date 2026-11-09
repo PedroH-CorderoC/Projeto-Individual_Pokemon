@@ -18,7 +18,7 @@ function Login() {
                 </div><div class='registros'>Entre com Email<input id='ipt_email'></div> 
                 <div class='registros'>Entre com a senha<input id='ipt_senha'></div>
                 <div id='msg' class='mensagem'></div>
-                <button class='botao_finalizar' onclick='FinalizarLogin()'>Login</button></div> 
+                <button class='botao_finalizar' onclick='FinalizarLogin()'>Login</button></div>
                 `
     botao_login.style.background = 'white'
     botao_cadastro.style.background = 'none'
@@ -45,8 +45,7 @@ function FinalizarCadastro() {
     var emailVar = ipt_email.value;
     var senhaVar = ipt_senha.value;
     var confirmacaoSenhaVar = ipt_senha_confir.value;
-
-    // Verificando se há algum campo em branco
+    
     if (
       nomeVar == "" ||
       emailVar == "" ||
@@ -54,10 +53,10 @@ function FinalizarCadastro() {
       confirmacaoSenhaVar == ""
     ) {
       mostrarMensagem("Preencha Todos os Campos")
-      return false;
+      return;
     } else if (senhaVar != confirmacaoSenhaVar) {
       mostrarMensagem("Senhas diferentes")
-      return false;
+      return;
     } 
 
     let Caracter_colocado = false;
@@ -171,11 +170,11 @@ function FinalizarLogin() {
                 });
 
             } else {
-
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
                     console.error(texto);
+                    msg.innerHTML = texto;
                 });
             }
 

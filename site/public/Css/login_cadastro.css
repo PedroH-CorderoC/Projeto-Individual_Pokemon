@@ -1,0 +1,48 @@
+.Login {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-around;
+  gap: 20px;       
+}
+
+.trocar_cadastro {
+  display: flex;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 12px;
+  background: #cfdbe8;
+}
+
+.trocar_cadastro button{
+  padding: 10px;
+  border: 0;
+  border-radius: 9px;
+  background: none;
+  color: #566b82;
+  font-weight: 800;  
+  width: 150px;
+}
+
+.Login input {
+  border: 1px solid;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 90%;
+  padding: 10px;
+}
+
+.registros{
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+button.botao_finalizar {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: blue;
+  color: white;
+  box-shadow: 3px 4px 0 gray;
+}

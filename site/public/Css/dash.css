@@ -70,3 +70,23 @@
   position: relative;
   height: 90px;
 }
+
+
+.Barra-Preenchida.Kanto_Quiz {
+  background: #d63c3c; 
+}
+.Barra-Preenchida.Tipos_Quiz {
+  background: #2f80ed; 
+}
+.Barra-Preenchida.Lendários_Quiz {
+  background: #7b4bc2; 
+}
+.Barra-Preenchida.Evoluções_Quiz {
+  background: #2e9e5b; 
+}
+.Barra-Preenchida.Anime_Quiz {
+  background: #f4c20d;
+}
+.Barra-Preenchida.Jogos_Quiz {
+  background: #4a5a6e;
+}

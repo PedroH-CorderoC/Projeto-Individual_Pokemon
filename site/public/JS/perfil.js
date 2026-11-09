@@ -1,6 +1,6 @@
 let fotos_Perfil = ['cyndaquil.png', 'mudkip.png', 'bulba.png', 'eevee.png', 'mew.png', 'torchic.png', 'pikachu.png', 'totodile.png'];
-let Cores_Console = ['gold', 'blue', 'green', 'purple', 'gray', 'cyan'];
-let Cores_Exibicao = ['Dourado', 'Azul', 'Verde', 'Roxo', 'Cinza', 'Ciano'];
+let Cores_Console = ['gold', 'orange', 'green', 'purple', 'gray', 'cyan'];
+let Cores_Exibicao = ['Dourado', 'Laranja', 'Verde', 'Roxo', 'Cinza', 'Ciano'];
 
 function Perfil() {
     resetar()

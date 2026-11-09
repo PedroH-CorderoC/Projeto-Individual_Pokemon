@@ -127,7 +127,7 @@ function carregarResumoQuizzes() {
 
             for (let contador = 0; contador < json.length; contador++) {
                 let q = json[contador];
-                let percentual = q.totalPerguntas > 0 ? Math.round(q.melhor / q.totalPerguntas * 100) : 0;
+                let percentual = q.melhor * 100 / q.totalPerguntas;
 
                 totalTentativas += q.tentativas;
 

@@ -43,7 +43,7 @@ function Dash() {
 }
 
 function carregarUltima() {
-    fetch(`/quiz/ultima-tentativa/${encodeURIComponent(Email_Usuario)}`).then(function (resposta) {
+    fetch(`/quiz/ultima-tentativa/${Email_Usuario}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(json => {
                 let u = document.getElementById("kpiUltima");
@@ -55,7 +55,7 @@ function carregarUltima() {
 }
 
 function carregarEvolucao() {
-    fetch(`/quiz/evolucao/${encodeURIComponent(Email_Usuario)}`).then(function (resposta) {
+    fetch(`/quiz/evolucao/${Email_Usuario}`).then(function (resposta) {
         let canvas = document.getElementById("graficoEvolucao");
         if (canvas == null) return;                   
 
@@ -114,7 +114,7 @@ function carregarEvolucao() {
 }
 
 function carregarResumoQuizzes() {
-    fetch(`/quiz/resumo/${encodeURIComponent(Email_Usuario)}`).then(function (resposta) {
+    fetch(`/quiz/resumo/${Email_Usuario}`).then(function (resposta) {
         if (!resposta.ok) return;
 
         resposta.json().then(json => {
@@ -151,7 +151,7 @@ function carregarResumoQuizzes() {
 }
 
 function carregarAcertosErros() {
-    fetch(`/quiz/acertos-erros/${encodeURIComponent(Email_Usuario)}`).then(function (resposta) {
+    fetch(`/quiz/acertos-erros/${Email_Usuario}`).then(function (resposta) {
         let canvas = document.getElementById("graficoAcertos");
         if (canvas == null) return;
 

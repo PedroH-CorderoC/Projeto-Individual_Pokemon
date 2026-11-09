@@ -36,7 +36,6 @@ create table Perguntas (
     Alternativa_c varchar(80) not null,
     Alternativa_d varchar(80) not null,
     Correta char(1) not null,
-    pontuacao int not null default 10,
     FkQuiz int not null,
     constraint fk_perguntas_quiz foreign key (FkQuiz) references Quiz (idQuiz)
 );
@@ -50,7 +49,7 @@ create table tentativas (
     FkQuiz int,
     idTentativa int,
     data_realizacao datetime default current_timestamp,
-    pontos int not null,
+    acertos int not null,
     primary key (FkUsuario, FkQuiz, idTentativa),
     constraint fk_tentativas_usuario foreign key (FkUsuario) references Usuario (idUsuario),
     constraint fk_tentativas_quiz foreign key (FkQuiz) references Quiz (idQuiz)
@@ -86,11 +85,11 @@ insert into Perguntas (Peergunta, Alternativa_a, Alternativa_b, Alternativa_c, A
 ('O tipo Água é super efetivo contra qual tipo?', 'Planta', 'Elétrico', 'Fogo', 'Voador', 'c', 2),
 ('Ataques Elétricos não causam dano em qual tipo?', 'Pedra', 'Terra', 'Aço', 'Gelo', 'b', 2),
 ('Qual tipo é fraco contra ataques de Fogo?', 'Planta', 'Água', 'Pedra', 'Dragão', 'a', 2),
-('Ataques Normais não causam dano em qual tipo?', 'Fantasma', 'Psíquico', 'Sombrio', 'Lutador', 'a', 4),
-('Qual tipo surgiu na segunda geração junto com o tipo Aço?', 'Fada', 'Sombrio', 'Dragão', 'Gelo', 'b', 4),
-('Qual tipo foi introduzido na sexta geração?', 'Aço', 'Sombrio', 'Fada', 'Gelo', 'c', 4),
-('Ataques de Dragão são super efetivos contra qual tipo?', 'Gelo', 'Fada', 'Dragão', 'Aço', 'c', 4),
-('Quais são os tipos de Gyarados?', 'Água e Dragão', 'Água e Voador', 'Água e Sombrio', 'Dragão e Voador', 'b', 4),
+('Ataques Normais não causam dano em qual tipo?', 'Fantasma', 'Psíquico', 'Sombrio', 'Lutador', 'a', 2),
+('Qual tipo surgiu na segunda geração junto com o tipo Aço?', 'Fada', 'Sombrio', 'Dragão', 'Gelo', 'b', 2),
+('Qual tipo foi introduzido na sexta geração?', 'Aço', 'Sombrio', 'Fada', 'Gelo', 'c', 2),
+('Ataques de Dragão são super efetivos contra qual tipo?', 'Gelo', 'Fada', 'Dragão', 'Aço', 'c', 2),
+('Quais são os tipos de Gyarados?', 'Água e Dragão', 'Água e Voador', 'Água e Sombrio', 'Dragão e Voador', 'b', 2),
 
 -- ===== LENDÁRIOS =====
 ('Quais são as três aves lendárias de Kanto?', 'Articuno, Zapdos e Moltres', 'Lugia, Ho-Oh e Celebi', 'Raikou, Entei e Suicune', 'Latias, Latios e Rayquaza', 'a', 3),
@@ -131,3 +130,8 @@ insert into Perguntas (Peergunta, Alternativa_a, Alternativa_b, Alternativa_c, A
 ('Qual é o Pokémon número 001 da Pokédex Nacional?', 'Caterpie', 'Pikachu', 'Mew', 'Bulbasaur', 'd', 6),
 ('Qual jogo de realidade aumentada fez sucesso em 2016?', 'Pokémon GO', 'Pokémon Café', 'Pokémon Quest', 'Pokémon Masters', 'a', 6),
 ('Qual é a região de Pokémon Black e White?', 'Unova', 'Kalos', 'Paldea', 'Galar', 'a', 6);
+
+
+select * from tentativas;
+
+select * from usuario;

@@ -38,6 +38,10 @@
   font-size: 18px;
 }
 
+.Textos_KPI {
+  font-size: 11px;
+}
+
 .Melhor-Linha {
   display: flex;
   align-items: center;

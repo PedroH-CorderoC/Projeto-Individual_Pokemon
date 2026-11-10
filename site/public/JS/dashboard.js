@@ -14,9 +14,12 @@ function Dash() {
     dash.style.boxShadow = 'none'
 
     if (Email_Usuario == '') {
-        TelaGrande.innerHTML = `<div class="Sem-Cadastro"><h1>Faça login para ver seu progresso</h1></div>`;
-        TelaBaixa.innerHTML = `<div class="Sem-Cadastro">
-            <button class='botao' onclick="Login()">Entrar ou cadastrar</button></div>`;
+        TelaGrande.innerHTML = `
+                    <div class="Sem-Cadastro"><h1>Para Ter uma experiencia completa é necessario fazer o seu cadastro de Treinador</h1><br>
+                    <h3>Faça o Login para acompanhar sua jornada e completar todos os ginasios</h3></div>`;
+        TelaBaixa.innerHTML = `<div class="Sem-Cadastro"><b>Você ainda não entrou</b>
+                            <p>Seu progresso não será iniciado.</p>
+                            <button class='botao' onclick="Login()">Entrar ou cadastrar</button></div>`;
     } else {
 
     TelaGrande.innerHTML = `
@@ -27,9 +30,9 @@ function Dash() {
     TelaBaixa.innerHTML = `
         <div class="Dash-Baixo">
         <div class="Kpis-Dash">
-            <div class="Kpi"><span id="kpiTentativas">-</span><small>Tentativas</small></div>
-            <div class="Kpi"><span id="kpiPerfeitos">-</span><small>Ginásios 100%</small></div>
-            <div class="Kpi"><span id="kpiUltima">-</span><small>Última vez</small></div>
+            <div class="Kpi"><span id="kpiTentativas">-</span><div class='Textos_KPI'>Tentativas</div></div>
+            <div class="Kpi"><span id="kpiPerfeitos">-</span><div class='Textos_KPI'>Ginásios 100%</div></div>
+            <div class="Kpi"><span id="kpiUltima">-</span><div class='Textos_KPI'>Última vez</div></div>
         </div>
         <h4>Melhor tentativa por ginásio</h4>
         <div class="Melhores-Dash" id="listaMelhores"></div>

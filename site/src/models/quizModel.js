@@ -29,7 +29,7 @@ function registrarQuiz(email, idQuiz, acertos) {
                 FROM tentativas t
                 WHERE t.FkUsuario = u.idUsuario AND t.FkQuiz = ${idQuiz}),
                ${acertos}
-        FROM usuario u
+        FROM Usuario u
         WHERE u.Email = '${email}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -40,7 +40,7 @@ function buscarQtdTentativas(email) {
     var instrucao = `
         SELECT COUNT(*) AS tentativas
         FROM tentativas t
-        JOIN usuario u ON u.idUsuario = t.FkUsuario
+        JOIN Usuario u ON u.idUsuario = t.FkUsuario
         WHERE u.Email = '${email}';
     `;
     return database.executar(instrucao);
@@ -50,7 +50,7 @@ function buscarMaiorPontuacao(email) {
     var instrucao = `
         SELECT MAX(t.acertos) AS maiorPontuacao
         FROM tentativas t
-        JOIN usuario u ON u.idUsuario = t.FkUsuario
+        JOIN Usuario u ON u.idUsuario = t.FkUsuario
         WHERE u.Email = '${email}';
     `;
     return database.executar(instrucao);
@@ -61,7 +61,7 @@ function obterTentativasEPontuacao(email) {
         SELECT COUNT(*) AS tentativas,
                MAX(t.acertos) AS maiorPontuacao
         FROM tentativas t
-        JOIN usuario u ON u.idUsuario = t.FkUsuario
+        JOIN Usuario u ON u.idUsuario = t.FkUsuario
         WHERE u.Email = '${email}';
     `;
     return database.executar(instrucao);
@@ -71,7 +71,7 @@ function buscarUltimaTentativa(email) {
     var instrucao = `
         SELECT DATE_FORMAT(MAX(t.data_realizacao), '%d/%m/%Y') AS ultimaTentativa
         FROM tentativas t
-        JOIN usuario u ON u.idUsuario = t.FkUsuario
+        JOIN Usuario u ON u.idUsuario = t.FkUsuario
         WHERE u.Email = '${email}';
     `;
     return database.executar(instrucao);
@@ -82,7 +82,7 @@ function obterAcertosErrosUltimaTentativa(email) {
         SELECT t.acertos,
                (SELECT COUNT(*) FROM Perguntas p WHERE p.FkQuiz = t.FkQuiz) - t.acertos AS erros
         FROM tentativas t
-        JOIN usuario u ON u.idUsuario = t.FkUsuario
+        JOIN Usuario u ON u.idUsuario = t.FkUsuario
         WHERE u.Email = '${email}'
         ORDER BY t.data_realizacao DESC, t.idTentativa DESC
         LIMIT 1;
@@ -97,7 +97,7 @@ function obterPontuacoesPorTentativa(email) {
                t.acertos,
                DATE_FORMAT(t.data_realizacao, '%d/%m %H:%i') AS momento
         FROM tentativas t
-        JOIN usuario u ON u.idUsuario = t.FkUsuario
+        JOIN Usuario u ON u.idUsuario = t.FkUsuario
         JOIN Quiz q ON q.idQuiz = t.FkQuiz
         WHERE u.Email = '${email}'
         ORDER BY t.data_realizacao DESC, t.idTentativa DESC
@@ -113,7 +113,7 @@ function obterEvolucao(email) {
                t.idTentativa AS tentativa,
                t.acertos
         FROM tentativas t
-        JOIN usuario u ON u.idUsuario = t.FkUsuario
+        JOIN Usuario u ON u.idUsuario = t.FkUsuario
         JOIN Quiz q ON q.idQuiz = t.FkQuiz
         WHERE u.Email = '${email}'
         ORDER BY q.idQuiz, t.idTentativa;
@@ -133,7 +133,7 @@ function obterResumoQuizzes(email) {
         FROM Quiz q
         LEFT JOIN tentativas t
                ON t.FkQuiz = q.idQuiz
-              AND t.FkUsuario = (SELECT idUsuario FROM usuario WHERE Email = '${email}')
+              AND t.FkUsuario = (SELECT idUsuario FROM Usuario WHERE Email = '${email}')
         GROUP BY q.idQuiz, q.Categoria
         ORDER BY q.idQuiz;
     `;

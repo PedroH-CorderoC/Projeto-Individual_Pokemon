@@ -1,5 +1,5 @@
 drop database if exists PokeDS;
-create database PokeDS character set utf8mb4;
+create database PokeDS;
 use PokeDS;
 
 -- ------------------------------------------------------------

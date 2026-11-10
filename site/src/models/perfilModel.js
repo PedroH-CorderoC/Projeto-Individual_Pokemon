@@ -1,25 +1,25 @@
 var database = require("../database/config");
 
 function buscarPerfil(email) {
-    var instrucaoSql = `SELECT nome,
+    var instrucaoSql = `SELECT Nome AS nome,
                         DATE_FORMAT(Data_cadastro, '%d/%m/%Y') AS dtRegistro,
-                        Foto_perfil as FotoPerfil,
-                        Cor_console as CorConsole
-                        FROM usuario
-                        WHERE email = '${email}';`;
+                        Foto_perfil AS FotoPerfil,
+                        Cor_console AS CorConsole
+                        FROM Usuario
+                        WHERE Email = '${email}';`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
 function atualizarAvatar(email, avatar) {
-    var instrucaoSql = `UPDATE usuario SET Foto_perfil = '${avatar}' WHERE email = '${email}';`;
+    var instrucaoSql = `UPDATE Usuario SET Foto_perfil = '${avatar}' WHERE Email = '${email}';`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
 function atualizarCor(email, cor) {
-    var instrucaoSql = `UPDATE usuario SET Cor_console = '${cor}' WHERE email = '${email}';`;
+    var instrucaoSql = `UPDATE Usuario SET Cor_console = '${cor}' WHERE Email = '${email}';`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }

@@ -1,6 +1,7 @@
 let email_validos = ['@gmail.com', '@sptech.school']
 let caracter_nescessarios = ['#', '@', '$', '&', '.', ',', ':', ';', '!', '?']
 let numeros_nescessarios = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+let letras_nescessarios = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 
 function Login() {
@@ -52,15 +53,17 @@ function FinalizarCadastro() {
       senhaVar == "" ||
       confirmacaoSenhaVar == ""
     ) {
-      mostrarMensagem("Preencha Todos os Campos")
+      msg.innerHTML =`Preencha Todos os Campos`;
       return;
     } else if (senhaVar != confirmacaoSenhaVar) {
-      mostrarMensagem("Senhas diferentes")
+      msg.innerHTML =`Senhas diferentes`;
       return;
     } 
 
     let Caracter_colocado = false;
     let Numero_colocado = false;
+    let Letra_colocado = false;
+    let Letra_Maiusculas_colocado = false;
     let Email_valido = false;
 
     for (let contador = 0; contador < email_validos.length; contador++) {
@@ -81,15 +84,35 @@ function FinalizarCadastro() {
      }
     }
 
-    if (Email_valido == false) {
-      mostrarMensagem('Email invalido. Use gmail ou sptech.school');
-      return false;
+    for (let contador = 0; contador < letras_nescessarios.length; contador++) {
+      if ((senhaVar.toLowerCase()).includes(letras_nescessarios[contador]) ==  true) {
+      Letra_colocado = true;
+     }
+    }
+
+    
+    for (let contador = 0; contador < senhaVar.length; contador++) {
+      let letra = senhaVar[contador];
+      if (letras_nescessarios.includes(letra.toLowerCase()) && letra == letra.toUpperCase()) {
+      Letra_Maiusculas_colocado = true;
+      }
+    }
+
+    if (Letra_colocado == false) {
+      msg.innerHTML = `Senha deve conter letras`;
+      return;
+    } else if (Letra_Maiusculas_colocado == false) {
+      msg.innerHTML = `Senha tem que ter letras maiúsculas`
+      return;
+    } else if (Email_valido == false) {
+      msg.innerHTML = `Email invalido. Use gmail ou sptech.school`;
+      return;
     } else if (senhaVar.length < 8) {
-      mostrarMensagem('Senha tem que ter 8 carateres');
-      return false;
+      msg.innerHTML =`Senha tem que ter 8 carateres`;
+      return;
     } else if (Numero_colocado == false || Caracter_colocado == false) {
-      mostrarMensagem('Senha precisa de Caracter Especial e Numero');
-      return false;
+      msg.innerHTML =`Senha precisa de Caracter Especial e Numero`;
+      return;
     }
 
     // Enviando o valor da nova input
@@ -109,7 +132,7 @@ function FinalizarCadastro() {
 
         if (resposta.ok) {
 
-          mostrarMensagem("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
+          msg.innerHTML = `Cadastro realizado com sucesso! Redirecionando para tela de Login...`
 
           setTimeout(() => {
             Login()  
@@ -117,7 +140,7 @@ function FinalizarCadastro() {
           
         } else {
           resposta.text().then(function (texto) {
-            mostrarMensagem(texto);  
+            msg.innerHTML =texto;  
         })
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
@@ -126,7 +149,7 @@ function FinalizarCadastro() {
         console.log(`#ERRO: ${resposta}`);
         
       });
-    return false;
+    return;
   }
 
 function FinalizarLogin() {
@@ -135,8 +158,8 @@ function FinalizarLogin() {
     var senhaVar = ipt_senha.value;
 
         if (emailVar == "" || senhaVar == "") {
-            mostrarMensagem('Mensagem de erro para todos os campos em branco')
-            return false;
+            msg.innerHTML = `Mensagem de erro para todos os campos em branco`
+            return;
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -182,9 +205,5 @@ function FinalizarLogin() {
             console.log(erro);
         })
 
-        return false;
-}
-
-function mostrarMensagem(texto) {
-  msg.innerHTML = texto
+        return;
 }

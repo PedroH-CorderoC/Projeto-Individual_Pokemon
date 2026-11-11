@@ -10,27 +10,33 @@ function autenticar(req, res) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
 
-        usuarioModel.autenticar(email, senha)
+        usuarioModel.autenticar(email)
             .then(
                 function (resultadoAutenticar) {
-                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`);
 
                     if (resultadoAutenticar.length == 1) {
-                        console.log(resultadoAutenticar);
 
-                        res.json({
-                            email: resultadoAutenticar[0].Email,
-                            nome: resultadoAutenticar[0].Nome,
-                            id: resultadoAutenticar[0].idUsuario,
-                        });
+                        let senhaBanco = resultadoAutenticar[0].Senha;
+
+                        if (senha == senhaBanco) {
+
+                            res.json({
+                                email: resultadoAutenticar[0].Email,
+                                nome: resultadoAutenticar[0].Nome,
+                                id: resultadoAutenticar[0].idUsuario,
+                            });
+
+                        } else {
+                            res.status(403).send("Senha incorreta!");
+                        }
+
                     } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                        res.status(403).send("Email não encontrado!");
                     }
+
                 }
-            ).catch(
+            )
+            .catch(
                 function (erro) {
                     console.log(erro);
                     console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
@@ -38,7 +44,6 @@ function autenticar(req, res) {
                 }
             );
     }
-
 }
 
 function cadastrar(req, res) {

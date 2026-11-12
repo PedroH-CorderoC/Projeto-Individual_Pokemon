@@ -34,7 +34,7 @@ Cores Console<br>
 <div class="Cores_Alterar" id="Cores"></div><br>
 `;
     TelaBaixa.innerHTML = `<div class='Deslogar'>
-    <h1>Dejesa Deslogar?</h1><br>
+    <h1>Deseja Deslogar?</h1><br>
     <h4>Clique no botão aqui em baixo</h4><br>
     <button class='botao' onclick="Deslogar()">Deslogar</button></div>`;
 

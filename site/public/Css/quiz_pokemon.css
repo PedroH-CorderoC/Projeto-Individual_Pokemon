@@ -36,10 +36,12 @@
 }
 
 .Alternativas {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 270px);
+    grid-template-rows: repeat(2, 200px);
     gap: 4px;
     height: 100%;
+    place-items: center;
 }
 
 .Selecionar {
@@ -52,7 +54,7 @@
 }
 
 .Alternativas button{
-    width: 250px;
+    width: 150px;
     border-radius: 10px;
     background: blue;
     color: white;
@@ -60,4 +62,30 @@
 
 .Alternativas h2 {
     color: red;
+}
+
+.Selecio.letraA{
+    grid-column: 1; 
+    grid-row: 1;
+}
+.Selecio.letraB {
+    grid-column: 2; 
+    grid-row: 1;
+}
+
+.Selecio.letraC {
+    grid-column: 1; 
+    grid-row: 2;
+}
+
+.Selecio.letraD {
+    grid-column: 2; 
+    grid-row: 2;
+}
+
+.Perguntas_Atual {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }

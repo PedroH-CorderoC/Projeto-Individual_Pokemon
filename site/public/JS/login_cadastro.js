@@ -59,6 +59,19 @@ function FinalizarCadastro() {
       msg.innerHTML =`Senhas diferentes`;
       return;
     } 
+    
+    if (senhaVar.length > 45) {
+      msg.innerHTML =`Senha muito grande`;
+      return;
+    } 
+    if (emailVar.length > 45) {
+      msg.innerHTML =`Email muito grande`;
+      return;
+    } 
+    if (nomeVar.length > 45) {
+      msg.innerHTML =`Nome muito grande`;
+      return;
+    } 
 
     let Caracter_colocado = false;
     let Numero_colocado = false;

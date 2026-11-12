@@ -32,7 +32,7 @@ function Dash() {
         <div class="Kpis-Dash">
             <div class="Kpi"><span id="kpiTentativas">-</span><div class='Textos_KPI'>Tentativas</div></div>
             <div class="Kpi"><span id="kpiPerfeitos">-</span><div class='Textos_KPI'>Ginásios 100%</div></div>
-            <div class="Kpi"><span id="kpiUltima">-</span><div class='Textos_KPI'>Última vez</div></div>
+            <div class="Kpi"><span id="kpiUltima">-</span><div class='Textos_KPI'>Data Última Tentativa</div></div>
         </div>
         <h4>Melhor tentativa por ginásio</h4>
         <div class="Melhores-Dash" id="listaMelhores"></div>

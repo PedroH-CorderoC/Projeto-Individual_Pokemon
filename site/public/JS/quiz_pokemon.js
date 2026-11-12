@@ -15,7 +15,7 @@ function Quiz() {
 
         TelaGrande.innerHTML = `<h1>Selecione o Ginasio que irá enfrentar</h1><br><div class="Tipos-Quiz" id='TipoQuiz'></div>`
 
-        TelaBaixa.innerHTML = `<div class="Home-Pequeno"><h4>Os Ginasios Estão te esperando Treinador</h4><br><h2>${Nome_Usuario}</h2><br> Selecione quem irá enfrentar</div>`
+        TelaBaixa.innerHTML = `<div class="Home-Pequeno"><h4>Os Ginasios Estão te esperando Treinador</h4><br> Selecione quem irá enfrentar</div>`
 
         fetch(`/quiz/listar`, {
             method: "GET"

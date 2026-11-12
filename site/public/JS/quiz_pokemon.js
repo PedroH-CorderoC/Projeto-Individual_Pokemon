@@ -81,18 +81,28 @@ function iniciarQuiz(idQuiz) {
 function mostrarPergunta() {
     let p = Perguntas_Quiz[Pergunta_Atual];
 
-    TelaGrande.innerHTML = `
-        <div class='Alternativas'><div class='Selecionar'><h2>X</h2><button class="Alternativa letraA">${p.Alternativa_a}</button></div>
-        <div class='Selecionar letraB'><h2>Y</h2><button class="Alternativa">${p.Alternativa_b}</button></div>
-        <div class='Selecionar letraC'><h2>A</h2><button class="Alternativa">${p.Alternativa_c}</button></div>
-        <div class='Selecionar letraD'><h2>B</h2><button class="Alternativa">${p.Alternativa_d}</button></div></div>`;
-    
+   TelaGrande.innerHTML = `
+    <div class='Alternativas'>
+        <div class='Selecionar letraA'>
+            <h2>X</h2><div class="Alternativa">${p.Alternativa_a}</div>
+        </div>
+        <div class='Selecionar letraB'>
+            <h2>Y</h2><div class="Alternativa">${p.Alternativa_b}</div>
+        </div>
+        <div class='Selecionar letraC'>
+            <h2>A</h2><div class="Alternativa">${p.Alternativa_c}</div>
+        </div>
+        <div class='Selecionar letraD'>
+            <h2>B</h2><div class="Alternativa">${p.Alternativa_d}</div>
+        </div>
+    </div>`;
 
     TelaBaixa.innerHTML = `
         <div class="Perguntas_Atual">
-        <h5>Pergunta ${Pergunta_Atual + 1} de ${Perguntas_Quiz.length}</h5>
-        <h3>${p.Peergunta}</h3></div>`
-
+            <h5>Pergunta ${Pergunta_Atual + 1} de ${Perguntas_Quiz.length}</h5>
+            <h3>${p.Peergunta}</h3>
+            <small>Use os botões X Y A B do console para responder as perguntas</small>
+        </div>`;
 }
 
 function responder(letra) {

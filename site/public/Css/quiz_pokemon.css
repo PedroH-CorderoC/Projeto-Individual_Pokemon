@@ -35,6 +35,37 @@
     background: #4a5a6e; 
 }
 
+.Selecionar {
+    background: black;
+    border-radius: 10px;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.Selecionar.letraA h2 { 
+    color: #2f6fe0; 
+} 
+
+.Selecionar.letraB h2 { 
+    color: #2da55a; 
+}
+
+.Selecionar.letraC h2 { 
+    color: #e5433b; 
+} 
+
+.Selecionar.letraD h2 { 
+    color: #efb62a; 
+}
+
+.Selecionar h2 {
+    font-size: 20px;
+    min-width: 30px;
+    text-align: center;
+}
+
 .Alternativas {
     display: grid;
     grid-template-columns: repeat(2, 270px);
@@ -45,23 +76,26 @@
 }
 
 .Selecionar {
-    margin: 10px;
-    padding: 10px;
     background: black;
     border-radius: 10px;
-    gap: 5px;
+    gap: 8px;
     display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: default;
+    user-select: none;
 }
 
-.Alternativas button{
-    width: 150px;
+.Alternativa {
+    width: 170px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     border-radius: 10px;
     background: blue;
     color: white;
-}
-
-.Alternativas h2 {
-    color: red;
 }
 
 .Selecio.letraA{
@@ -73,7 +107,7 @@
     grid-row: 1;
 }
 
-.Selecio.letraC {
+.Selecio.letraC{
     grid-column: 1; 
     grid-row: 2;
 }

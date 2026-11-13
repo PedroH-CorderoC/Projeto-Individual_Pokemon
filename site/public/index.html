@@ -64,7 +64,7 @@
                 <button onclick="Quiz()" id="quiz_pokemon">Ginásios</button>
                 <button onclick="Dicas()" id="Dicas_quiz">Dicas</button>
                 <button onclick="Home()" id="home">Home</button>
-                <button onclick="SobreMim()" id="SobreMim">Sobre mim</button>
+                <button onclick="SobreMim()" id="Sobre_Mim">Sobre mim</button>
                 <button onclick="Perfil()" id="perfil">Perfil</button>
                 <button onclick="Login()" id="login">Login</button>
             </div>
@@ -86,7 +86,7 @@
     <div class='Caixa-texto'> <h4>Você Sabia?</h4>
     <p>${Curiosidade}</p>`
     TelaBaixa.innerHTML = `<h4 class="Home-Pequeno">Vamos descobrir mais sobre esse mundo Pokemon</h4><br>`
-
+    
     function Home() {
         VoceSabia()
         resetar()
@@ -117,9 +117,9 @@
         Dicas_quiz.style.background = 'white'
         Dicas_quiz.style.boxShadow = '3px 4px 0px gray'
 
-        SobreMim.style.color = '#2a3849'
-        SobreMim.style.background = 'white'
-        SobreMim.style.boxShadow = '3px 4px 0px gray'
+        Sobre_Mim.style.color = '#2a3849'
+        Sobre_Mim.style.background = 'white'
+        Sobre_Mim.style.boxShadow = '3px 4px 0px gray'
 
 
         perfil.style.color = '#2a3849'
@@ -167,3 +167,4 @@
 <script src="./JS/Dicas.js"></script>
 <script src="./JS/login_cadastro.js"></script>
 <script src="./JS/perfil.js"></script>
+<script src="./JS/SobreMim.js"></script>

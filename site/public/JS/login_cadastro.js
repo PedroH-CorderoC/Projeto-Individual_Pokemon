@@ -11,7 +11,7 @@ function Login() {
     login.style.boxShadow = 'none'
     TelaGrande.innerHTML = `<h2>Bem Vindo Treinador!</h2> <br>
     <h3>Entre na sua conta usando o Email e a senha.</h3><br><br>
-    <div class='Caixa-texto'><p>Após o Login Sua Jornada começara e você tera acesso a esse mundo do Pokemon</p></div>`
+    <div class='Caixa-texto'><p>Após o Login Sua Jornada começara e você tera acesso a esse mundo Pokemon</p></div>`
     TelaBaixa.innerHTML = ` <div class="Login">
                 <div class="trocar_cadastro">
                 <button id="botao_login" onclick ='Login()'>Login</button> 

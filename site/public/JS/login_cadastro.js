@@ -17,7 +17,7 @@ function Login() {
                 <button id="botao_login" onclick ='Login()'>Login</button> 
                 <button id="botao_cadastro" onclick ='Cadastro()'>Cadastro</button> 
                 </div><div class='registros'>Entre com Email<input id='ipt_email'></div> 
-                <div class='registros'>Entre com a senha<input id='ipt_senha'></div>
+                <div class='registros'>Entre com a senha<input id='ipt_senha' type='password'></div>
                 <div id='msg' class='mensagem'></div>
                 <button class='botao_finalizar' onclick='FinalizarLogin()'>Login</button></div>
                 `
@@ -32,8 +32,8 @@ function Cadastro() {
                 <button id="botao_cadastro" onclick ='Cadastro()'>Cadastro</button> 
                 </div><div class='registros'>Entre com o nome<input id='ipt_treinador'></div>
                 <div class='registros'>Entre com Email<input id='ipt_email'></div> 
-                <div class='registros'>Entre com a senha<input id='ipt_senha'></div>
-                <div class='registros'>Confirmar a senha<input id='ipt_senha_confir'></div>
+                <div class='registros'>Entre com a senha<input id='ipt_senha' type='password'></div>
+                <div class='registros'>Confirmar a senha<input id='ipt_senha_confir' type='password'></div>
                 <div id='msg' class='mensagem'></div>
                 <button class='botao_finalizar' onclick='FinalizarCadastro()'>Cadastrar</button></div> 
                 `;
@@ -128,7 +128,6 @@ function FinalizarCadastro() {
       return;
     }
 
-    // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {

@@ -90,9 +90,6 @@ Observação: as rotas são implementadas no diretório `site/src/routes` e cham
 ## Testes e desenvolvimento
 - Não há testes automatizados incluídos. Para desenvolvimento, use `npm run dev`.
 
-## Contribuição
-- Abra uma issue ou envie um pull request. Mantenha mudanças pequenas e documentadas.
-
 ## Licença
 Este projeto utiliza a licença MIT (veja `site/LICENSE`).
 

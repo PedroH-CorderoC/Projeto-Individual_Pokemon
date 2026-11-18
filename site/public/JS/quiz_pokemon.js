@@ -100,7 +100,7 @@ function mostrarPergunta() {
     TelaBaixa.innerHTML = `
         <div class="Perguntas_Atual">
             <h5>Pergunta ${Pergunta_Atual + 1} de ${Perguntas_Quiz.length}</h5>
-            <h3>${p.Peergunta}</h3>
+            <h3>${p.Pergunta}</h3>
             <small>Use os botões X Y A B do console para responder as perguntas</small>
         </div>`;
 }
@@ -123,7 +123,7 @@ function finalizarQuiz() {
     TelaGrande.innerHTML = `
         <h1>Fim do desafio!</h1><br>
         <h3>Você acertou ${Acertos} de ${Perguntas_Quiz.length}</h3>`;
-    TelaBaixa.innerHTML = `<h3 class='Finalizacao_Quiz'>Escolher outro ginásio clicando no Start ou no Select a direita<br> ---></h3>`;
+    TelaBaixa.innerHTML = `<h3 class='Finalizacao_Quiz'>Escolher outro ginásio para batalhar<br><br> <button class='botao' onclick="Quiz()">Novo Ginasio</button><br><br> Tente derrotar todos os Ginasios </h3>`;
 
     fetch("/quiz/registrar", {
         method: "POST",

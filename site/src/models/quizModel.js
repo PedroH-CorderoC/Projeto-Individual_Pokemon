@@ -10,7 +10,7 @@ function listar() {
 
 function buscarPerguntas(idQuiz) {
     var instrucao = `
-        SELECT idPerguntas, Peergunta,
+        SELECT idPerguntas, Pergunta,
                Alternativa_a, Alternativa_b, Alternativa_c, Alternativa_d,
                Correta
         FROM Perguntas

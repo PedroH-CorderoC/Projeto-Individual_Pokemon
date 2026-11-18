@@ -30,7 +30,7 @@ create table Quiz (
 -- ------------------------------------------------------------
 create table Perguntas (
     idPerguntas int primary key auto_increment,
-    Peergunta varchar(150) not null,
+    Pergunta varchar(150) not null,
     Alternativa_a varchar(80) not null,
     Alternativa_b varchar(80) not null,
     Alternativa_c varchar(80) not null,
